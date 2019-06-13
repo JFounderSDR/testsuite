@@ -57,7 +57,7 @@ test_appCommunication_main用于测试通信接口，执行步骤如下：<br>
 
 4. 将生成的libtest_baseInterface.so放到openSCA/libs/testsuite目录下。
 
-5. 在openSCA/testsuite/test_interface_main目录下使用如下命令，编译生成test_interface_main.out：
+5. 在openSCA/testsuite/base_test_main目录下使用如下命令，编译生成base_test_main.out：
 
 > arm-xilinx-linux-gnueabi-g++ -o base_test_main.out ./src/test_interface.cpp -I../../include/runtime_env/ -I../../include/ACE_wrappers/ -I../../include/ACE_wrappers/TAO/ -I../../include/ACE_wrappers/TAO/orbsvcs/ -I../../include/CF/ -I../../include/ -I../test_utils/include/ -I../test_baseInterface/include/ -L ../../libs/ace_tao/ -L../../libs/runtime_env/ -L../../libs/testsuite/ -L../../libs/tiny1xml/ -L../../libs/frameworks/ -lTAO_PI -lACE -lTAO -lTAO_AnyTypeCode -lKokyu -lTAO_CodecFactory -lTAO_Codeset -lTAO_CosEvent -lTAO_CosEvent_Skel -lTAO_CosEvent_Serv -lTAO_CosNaming_Serv -lTAO_CosNaming -lTAO_CosNaming_Skel -lTAO_DynamicInterface -lTAO_IFR_Client -lTAO_ImR_Client -lTAO_IORTable -lTAO_Svc_Utils -lTAO_Messaging -lTAO_Valuetype -lTAO_PortableServer -lorb_abstraction -lrte_utils -lCF_Interface -ltest_baseInterface -ltest_utils -lCF_Utils -lCF_StdPorts -lApplication -lApplicationFactory -lFile -lFileSystem -lFileManager -lXMLParser -ltiny1xml
 
