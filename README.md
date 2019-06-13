@@ -39,6 +39,7 @@ test_appCommunication_main用于测试通信接口，执行步骤如下：<br>
 ### cmake编译
 使用CMake工具进行编译，openSCA项目默认一起编译testsuite。
 配置openSCA项目目录下的configure.cmake文件，配置选项如下：<br>
+
 ![](https://github.com/JFounderSDR/testsuite/blob/master/compile_config.png)
 
 ### 命令编译
