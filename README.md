@@ -1,7 +1,7 @@
 # testsuite
 包含两个测试程序：base_test_main和test_appCommunication_main。<br>
-base_test_main测试基本接口；<br>
-test_appCommunication_main测试通信接口。<br>
+* base_test_main测试基本接口；<br>
+* test_appCommunication_main测试通信接口。<br>
 它们都依赖于libtest_utils.so和libtest_baseInterface.so动态库。<br>
 
 ## 基本接口测试说明
