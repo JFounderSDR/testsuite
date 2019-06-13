@@ -77,7 +77,7 @@ uninstallApplication(
 	const std::string appName);
 
 #define   CONNECT_PLATFORM_IP   	("192.168.1.84")
-#define   CONNECT_PLATFORM_PORT 	8010
+#define   CONNECT_PLATFORM_PORT 	35566
 #define   APP_NAME 					("MsgTransApp")
 #define   UPORT_NAME 				("external_data_out")
 #define   PPORT_NAME 				("external_data_in")
