@@ -19,8 +19,8 @@ base_test_main用于测试SCA2.2.2基础接口，包含如下功能测试：<br>
 9. 配置MsgTransApp波形的start_status属性
 10. 查询MsgTransApp波形的start_status属性值，检查属性值是否为新值
 11. 查询平台所包含设备的id和name
-12. 配置U1_Zynq7035设备的is_board属性
-13. 查询U1_Zynq7035设备的is_board属性值，检查属性值是否为新值
+12. 配置Zynq7035设备的is_board属性
+13. 查询Zynq7035设备的is_board属性值，检查属性值是否为新值
 
 ## 通信接口测试说明
 test_appCommunication_main用于测试通信接口，执行步骤如下：<br>
@@ -43,10 +43,15 @@ test_appCommunication_main用于测试通信接口，执行步骤如下：<br>
 ![](https://github.com/JFounderSDR/testsuite/blob/master/compile_config.png)
 
 ### 命令编译
+现支持两种编译类型：jLinux、PetaLinux2015.4
 使用编译命令进行编译，需要先编译两个动态库。
 
 1. 在openSCA/testsuite/test_utils目录下使用如下命令，编译生成libtest_utils.so动态库：
 
+jLinux:
+> arm-linux-gnueabihf-g++ -shared -fPIC -o libtest_utils.so ./src/test_utils.cpp -I../../include/ACE_wrappers/ -I../../include/ACE_wrappers/TAO/ -I../../include/ACE_wrappers/TAO/orbsvcs/
+
+PetaLinux2015.4:
 > arm-xilinx-linux-gnueabi-g++ -shared -fPIC -o libtest_utils.so ./src/test_utils.cpp -I../../include/ACE_wrappers/ -I../../include/ACE_wrappers/TAO/ -I../../include/ACE_wrappers/TAO/orbsvcs/
 
 2. 将生成的libtest_utils.so放到openSCA/libs/testsuite目录下。
