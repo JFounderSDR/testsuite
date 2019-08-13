@@ -58,14 +58,26 @@ PetaLinux2015.4:
 
 3. 在openSCA/testsuite/test_baseInterface目录下使用如下命令，编译生成libtest_baseInterface.so动态库：
 
+jLinux:
+> arm-linux-gnueabihf-g++ -shared -fPIC -std=c++0x -o libtest_baseInterface.so ./src/test_baseInterface.cpp ./src/test_communicationPorts.cpp -I../../include/ACE_wrappers/ -I../../include/ACE_wrappers/TAO/ -I../../include/ACE_wrappers/TAO/orbsvcs/ -I../../include/CF/ -I../../include/ -I../test_utils/include/ -I../test_baseInterface/include/ -L../../libs/testsuite/ -L../../libs/frameworks/
+
+PetaLinux2015.4:
 > arm-xilinx-linux-gnueabi-g++ -shared -fPIC -std=c++0x -o libtest_baseInterface.so ./src/test_baseInterface.cpp ./src/test_communicationPorts.cpp -I../../include/ACE_wrappers/ -I../../include/ACE_wrappers/TAO/ -I../../include/ACE_wrappers/TAO/orbsvcs/ -I../../include/CF/ -I../../include/ -I../test_utils/include/ -I../test_baseInterface/include/ -L../../libs/testsuite/ -L../../libs/frameworks/
 
 4. 将生成的libtest_baseInterface.so放到openSCA/libs/testsuite目录下。
 
 5. 在openSCA/testsuite/base_test_main目录下使用如下命令，编译生成base_test_main.out：
 
+jLinux:
 > arm-xilinx-linux-gnueabi-g++ -o base_test_main.out ./src/test_interface.cpp -I../../include/runtime_env/ -I../../include/ACE_wrappers/ -I../../include/ACE_wrappers/TAO/ -I../../include/ACE_wrappers/TAO/orbsvcs/ -I../../include/CF/ -I../../include/ -I../test_utils/include/ -I../test_baseInterface/include/ -L ../../libs/ace_tao/ -L../../libs/runtime_env/ -L../../libs/testsuite/ -L../../libs/tiny1xml/ -L../../libs/frameworks/ -lTAO_PI -lACE -lTAO -lTAO_AnyTypeCode -lKokyu -lTAO_CodecFactory -lTAO_Codeset -lTAO_CosEvent -lTAO_CosEvent_Skel -lTAO_CosEvent_Serv -lTAO_CosNaming_Serv -lTAO_CosNaming -lTAO_CosNaming_Skel -lTAO_DynamicInterface -lTAO_IFR_Client -lTAO_ImR_Client -lTAO_IORTable -lTAO_Svc_Utils -lTAO_Messaging -lTAO_Valuetype -lTAO_PortableServer -lorb_abstraction -lrte_utils -lCF_Interface -ltest_baseInterface -ltest_utils -lCF_Utils -lCF_StdPorts -lApplication -lApplicationFactory -lFile -lFileSystem -lFileManager -lXMLParser -ltiny1xml
+
+PetaLinux2015.4:
+> arm-linux-gnueabihf-g++ -o base_test_main.out ./src/test_interface.cpp -I../../include/runtime_env/ -I../../include/ACE_wrappers/ -I../../include/ACE_wrappers/TAO/ -I../../include/ACE_wrappers/TAO/orbsvcs/ -I../../include/CF/ -I../../include/ -I../test_utils/include/ -I../test_baseInterface/include/ -L ../../libs/ace_tao/ -L../../libs/runtime_env/ -L../../libs/testsuite/ -L../../libs/tiny1xml/ -L../../libs/frameworks/ -lTAO_PI -lACE -lTAO -lTAO_AnyTypeCode -lKokyu -lTAO_CodecFactory -lTAO_Codeset -lTAO_CosEvent -lTAO_CosEvent_Skel -lTAO_CosEvent_Serv -lTAO_CosNaming_Serv -lTAO_CosNaming -lTAO_CosNaming_Skel -lTAO_DynamicInterface -lTAO_IFR_Client -lTAO_ImR_Client -lTAO_IORTable -lTAO_Svc_Utils -lTAO_Messaging -lTAO_Valuetype -lTAO_PortableServer -lorb_abstraction -lrte_utils -lCF_Interface -ltest_baseInterface -ltest_utils -lCF_Utils -lCF_StdPorts -lApplication -lApplicationFactory -lFile -lFileSystem -lFileManager -lXMLParser -ltiny1xml
 
 6. 在openSCA/testsuite/test_applicationCommunication_main目录下使用如下命令，编译生成test_applicationCommunication_main.out:
 
+jLinux:
 > arm-xilinx-linux-gnueabi-g++ -o test_applicationCommunication_main.out ./src/test_appCommunication.cpp ../test_baseInterface/src/test_communicationPorts.cpp -I ../../include/runtime_env/ -I ../../include/ACE_wrappers/ -I ../../include/ACE_wrappers/TAO/ -I ../../include/ACE_wrappers/TAO/orbsvcs/ -I ../../include/CF/ -I ../../include/ -I ../test_utils/include/ -I ../test_baseInterface/include/ -L ../../libs/ace_tao/ -L ../../libs/runtime_env/ -L ../../libs/testsuite/ -L ../../libs/tiny1xml/ -L ../../libs/frameworks/ -lTAO_PI -lACE -lTAO -lTAO_AnyTypeCode -lKokyu -lTAO_CodecFactory -lTAO_Codeset -lTAO_CosEvent -lTAO_CosEvent_Skel -lTAO_CosEvent_Serv -lTAO_CosNaming_Serv -lTAO_CosNaming -lTAO_CosNaming_Skel -lTAO_DynamicInterface -lTAO_IFR_Client -lTAO_ImR_Client -lTAO_IORTable -lTAO_Svc_Utils -lTAO_Messaging -lTAO_Valuetype -lTAO_PortableServer -lorb_abstraction -lrte_utils -lCF_Interface -ltest_baseInterface -ltest_utils -lCF_Utils -lCF_StdPorts -lApplication -lApplicationFactory -lFile -lFileSystem -lFileManager -lXMLParser -ltiny1xml -lpthread
+
+PetaLinux2015.4:
+> arm-linux-gnueabihf-g++ -o test_applicationCommunication_main.out ./src/test_appCommunication.cpp ../test_baseInterface/src/test_communicationPorts.cpp -I ../../include/runtime_env/ -I ../../include/ACE_wrappers/ -I ../../include/ACE_wrappers/TAO/ -I ../../include/ACE_wrappers/TAO/orbsvcs/ -I ../../include/CF/ -I ../../include/ -I ../test_utils/include/ -I ../test_baseInterface/include/ -L ../../libs/ace_tao/ -L ../../libs/runtime_env/ -L ../../libs/testsuite/ -L ../../libs/tiny1xml/ -L ../../libs/frameworks/ -lTAO_PI -lACE -lTAO -lTAO_AnyTypeCode -lKokyu -lTAO_CodecFactory -lTAO_Codeset -lTAO_CosEvent -lTAO_CosEvent_Skel -lTAO_CosEvent_Serv -lTAO_CosNaming_Serv -lTAO_CosNaming -lTAO_CosNaming_Skel -lTAO_DynamicInterface -lTAO_IFR_Client -lTAO_ImR_Client -lTAO_IORTable -lTAO_Svc_Utils -lTAO_Messaging -lTAO_Valuetype -lTAO_PortableServer -lorb_abstraction -lrte_utils -lCF_Interface -ltest_baseInterface -ltest_utils -lCF_Utils -lCF_StdPorts -lApplication -lApplicationFactory -lFile -lFileSystem -lFileManager -lXMLParser -ltiny1xml -lpthread
