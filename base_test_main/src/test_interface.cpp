@@ -25,7 +25,7 @@
 #define   CONNECT_PLATFORM_IP   	("192.168.1.84")
 #define   CONNECT_PLATFORM_PORT 	35566
 #define   APP_NAME 					("MsgTransApp")
-#define   DEV_NAME 					("U1_Zynq7035")
+#define   DEV_NAME 					("Zynq7035")
 #define   UPORT_NAME 				("external_data_out")
 #define   PPORT_NAME 				("external_data_in")
 #define   TRANSFER_DATA_MAX_LEN		8000

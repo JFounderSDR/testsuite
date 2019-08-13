@@ -325,8 +325,7 @@ namespace OpenSCATest {
 
 	private:
 
-		StandardInterfaces::RealOctet_var m_provide_port_v;
-		CF::PPort_var m_use_port_v;
+		CORBA::Object_var m_provide_port;
 
 		std::string m_namingServiceIorStr;
 

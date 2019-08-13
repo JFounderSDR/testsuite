@@ -687,22 +687,6 @@ BaseTest::initializeUsePort()
 		m_usePort = new CWave_Use_port_i();
 	}
 
-	CORBA::Object_var object = m_usePort->_this();
-
-	if(CORBA::is_nil(object)){
-		TESTDEBUG(0, [test_baseInterface::initializeUsePort],
-			" object is nil.")
-		return;
-	} else {
-		m_use_port_v = CF::PPort::_narrow(object.in());
-
-		if(CORBA::is_nil(m_use_port_v)){
-			TESTDEBUG(0, [test_baseInterface::initializeUsePort],
-				" m_use_port_v is nil.")
-			return;
-		}
-	}
-
 	TESTDEBUG(8, [test_baseInterface::initializeUsePort], " leave...")
 }
 
@@ -721,7 +705,7 @@ BaseTest::initializeProvidePort()
 	CORBA::Object_var object;
 	try {
 		m_poa->activate_object_with_id(waveProvidePort.in(), m_providePort);
-		object = m_poa->servant_to_reference(m_providePort);
+		m_provide_port = m_poa->servant_to_reference(m_providePort);
 	} catch (const CORBA::SystemException & e) {
 		TESTDEBUG(0, [test_baseInterface::initializeProvidePort],
 			" occure CORBA::SystemException when activate_object_with_id.")
@@ -738,17 +722,9 @@ BaseTest::initializeProvidePort()
 		return;
 	}
 
-	if(CORBA::is_nil(object)){
+	if(CORBA::is_nil(m_provide_port)){
 		TESTDEBUG(0, [test_baseInterface::initializeProvidePort],
-			" object is nil.")
-		return;
-	}
-
-	m_provide_port_v =
-		StandardInterfaces::RealOctet::_narrow(object.in());
-	if(CORBA::is_nil(m_provide_port_v)){
-		TESTDEBUG(0, [test_baseInterface::initializeProvidePort],
-			" m_providePort is nil.")
+			" m_provide_port is nil.")
 		return;
 	}
 
@@ -978,7 +954,7 @@ BaseTest::connectApplicationPorts(
 		}
 
 		// U Port Connects External P Port
-		m_targetPort->connectPort(m_provide_port_v.in(), "wave_consumer_port");
+		m_targetPort->connectPort(m_provide_port.in(), "wave_consumer_port");
 
 		CORBA::Object_var providePortObject = app->getPort(providePort.c_str());
 		if(CORBA::is_nil(providePortObject)){
@@ -994,7 +970,7 @@ BaseTest::connectApplicationPorts(
 		}
 
 		// P Port Connects External U Port
-		m_usePort->connectPort(providePortObject.in(), "wave_consumer_port");
+		m_usePort->connectPort(providePortObject.in(), "wave_producer_port");
 
 	} catch (const CORBA::SystemException & e) {
 		TESTDEBUG(0, [test_baseInterface::connectApplicationPorts],
@@ -1029,8 +1005,15 @@ BaseTest::disconnectApplication()
 			" m_targetPort is nil.")
 		return false;
 	}
-
 	m_targetPort->disconnectPort("wave_consumer_port");
+
+
+	if(CORBA::is_nil(m_usePort)){
+		TESTDEBUG(0, [test_baseInterface::disconnectApplication],
+			" m_usePort is nil.")
+		return false;
+	}
+	m_usePort->disconnectPort("wave_producer_port");
 
 	TESTDEBUG(8, [test_baseInterface::disconnectApplication], " leave...")
 
